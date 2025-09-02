@@ -1,4 +1,4 @@
 User-agent: *
 Disallow:
 
-Sitemap: https://nimajneb83.github.io/cognitiveconstructionlab/sitemap.xml
+Sitemap: https://nimajneb83.github.io/CognitiveConstructionLab/sitemap.xml
