@@ -25,6 +25,9 @@ group :jekyll_plugins do
     gem 'classifier-reborn'  # used for content categorization during the build
 end
 
+# Use for GitHub Pages deployment
+gem "github-pages", group: :jekyll_plugins
+
 # Gems for development or external data fetching (outside :jekyll_plugins)
 group :other_plugins do
     gem 'css_parser'
