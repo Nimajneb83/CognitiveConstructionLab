@@ -1,10 +1,11 @@
 source 'https://rubygems.org'
 
-gem 'jekyll'
+# Use github-pages gem for GitHub Pages compatibility
+gem "github-pages", group: :jekyll_plugins
 
 # Core plugins that directly affect site building
 group :jekyll_plugins do
-    gem 'jekyll-archives-v2'
+    gem 'jekyll-archives'  # Fixed: was jekyll-archives-v2
     gem 'jekyll-email-protect'
     gem 'jekyll-feed'
     gem 'jekyll-get-json'
@@ -17,30 +18,35 @@ group :jekyll_plugins do
     gem 'jekyll-scholar'
     gem 'jekyll-sitemap'
     gem 'jekyll-tabs'
-    gem 'jekyll-terser', :git => "https://github.com/RobertoJBeltran/jekyll-terser.git"
+    # Removed jekyll-terser git dependency - not compatible with GitHub Pages
     gem 'jekyll-toc'
     gem 'jekyll-twitter-plugin'
     gem 'jemoji'
-
-    gem 'classifier-reborn'  # used for content categorization during the build
+    gem 'classifier-reborn'
 end
 
-# Use for GitHub Pages deployment
-gem "github-pages", group: :jekyll_plugins
-
-# Suggested by Claude:
+# Development only gems (won't be installed on GitHub Pages)
 group :development do
   gem "jekyll-admin"
 end
 
-# Gems for development or external data fetching (outside :jekyll_plugins)
+# Additional gems for functionality
+gem 'unicode_utils', '~> 1.4'
+gem 'webrick', '~> 1.7'
+
+# Gems for development or external data fetching
 group :other_plugins do
     gem 'css_parser'
     gem 'feedjira'
     gem 'httparty'
-    gem 'observer'       # used by jekyll-scholar
-    gem 'ostruct'        # used by jekyll-twitter-plugin
-    # gem 'terser'         # used by jekyll-terser
-    # gem 'unicode_utils' -- should be already installed by jekyll
-    # gem 'webrick' -- should be already installed by jekyll
+    gem 'observer'
+    gem 'ostruct'
 end
+
+# Platform-specific gems
+platforms :mingw, :x64_mingw, :mswin, :jruby do
+  gem "tzinfo", ">= 1", "< 3"
+  gem "tzinfo-data"
+end
+
+gem "wdm", "~> 0.1", :platforms => [:mingw, :x64_mingw, :mswin]
